@@ -1,0 +1,16 @@
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Page.Title - Study Buddy</title>
+
+    @Styles.Render("~/Scripts/bootstrap")
+    @Styles.Render("~/Style/bootstrap")
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>
