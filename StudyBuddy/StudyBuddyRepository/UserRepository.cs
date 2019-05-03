@@ -92,6 +92,13 @@ namespace StudyBuddyRepository
             return user;
         }
 
+        public bool UserExists(string email)
+        {
+            var exist = db.Users.Any(u => u.Email == email);
+            if (exist == true)
+                return true;
+            else return false;
+        }
 
         #region Private Methods
 
@@ -106,13 +113,13 @@ namespace StudyBuddyRepository
 
         private bool VerifyPassword(string password, byte[] passwordHash, byte[] passwordSalt)
         {
-            using(var hmac = new HMACSHA512(passwordSalt))
+            using (var hmac = new HMACSHA512(passwordSalt))
             {
                 var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)
                 {
                     if (computedHash[i] != passwordHash[i])
-                        return false;   
+                        return false;
                 }
             }
             return true;

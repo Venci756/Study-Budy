@@ -16,5 +16,6 @@ namespace StudyBuddyRepository.Interfaces
         User GetUserByEmail(string email);
         List<User> GetAllUsers();
         void UpdatePassword(User user);
+        bool UserExists(string email);
     }
 }
